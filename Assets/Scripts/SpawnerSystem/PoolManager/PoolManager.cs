@@ -1,4 +1,5 @@
 ﻿using SpawnerSystem.PoolManager.Controller;
+using SpawnerSystem.PoolManager.Controller.Interface;
 using SpawnerSystem.PoolManager.Enum;
 using SpawnerSystem.PoolManager.Signals;
 using UnityEngine;
@@ -41,12 +42,12 @@ namespace SpawnerSystem.PoolManager
         
         #endregion
 
-        public void OnListAdd(GameObject poolObj, PoolType poolType)
+        public void OnListAdd(IPoolable poolObj, PoolType poolType)
         {
             spawner.SpawnerID.SpawnerLocalSignals.onListAdd?.Invoke(poolObj,poolType);
         }
 
-        public GameObject OnListRemove(PoolType poolType)
+        public IPoolable OnListRemove(PoolType poolType)
         {
             return spawner.SpawnerID.SpawnerLocalSignals.onListRemove?.Invoke(poolType);
         }
