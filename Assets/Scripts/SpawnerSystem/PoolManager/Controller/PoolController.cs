@@ -1,4 +1,5 @@
 ﻿using System;
+using SpawnerSystem.PoolManager.Controller.Interface;
 using SpawnerSystem.PoolManager.Data.UnityObject;
 using SpawnerSystem.PoolManager.Data.ValueObject;
 using SpawnerSystem.PoolManager.Enum;
@@ -34,8 +35,7 @@ namespace SpawnerSystem.PoolManager.Controller
             spawner.SpawnerID.SpawnerLocalSignals.onListRemove -= ListRemove;
         }
         #endregion
-
-
+        
         private void Awake()
         {
             PoolData = GetWeaponData();
@@ -60,31 +60,31 @@ namespace SpawnerSystem.PoolManager.Controller
                 int PoolCount = PoolData[PoolType].PoolCount;
                 for (int i = 0; i < PoolCount; i++)
                 {
-                    var poolObj = Instantiate(PoolObj);
+                    var poolObj = Instantiate(PoolObj).GetComponent<IPoolable>();
                     Listadd(poolObj, PoolType);
                 }
             }
         }
         
-        public void Listadd(GameObject poolObj, PoolType poolType)
+        public void Listadd(IPoolable poolObj, PoolType poolType)
         {
             PoolChanges[poolType].Pool.Add(poolObj);
-            poolObj.transform.SetParent(place.transform,true);
-            poolObj.transform.position = Vector3.zero;
-            poolObj.SetActive(false);
+            poolObj.ITransform.SetParent(place.transform,true);
+            poolObj.ITransform.position = Vector3.zero;
+            poolObj.IGameObject.SetActive(false);
             if (PoolChanges[poolType].Use.Contains(poolObj))
             {
                 PoolChanges[poolType].Use.Remove(poolObj);
             }
         }
         
-        public GameObject ListRemove(PoolType poolType)
+        public IPoolable ListRemove(PoolType poolType)
         {
             if (PoolChanges[poolType].Pool.Count != 0)
             {
-                GameObject poolObj = PoolChanges[poolType].Pool[0];
+                IPoolable poolObj = PoolChanges[poolType].Pool[0];
                 PoolChanges[poolType].Use.Add(poolObj);
-                poolObj.SetActive(true);
+                poolObj.IGameObject.SetActive(true);
                 if (PoolChanges[poolType].Pool.Contains(poolObj))
                 {
                     PoolChanges[poolType].Pool.Remove(poolObj);
