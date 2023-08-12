@@ -1,16 +1,18 @@
-﻿using SpawnerSystem.PoolManager.Controller.Interface;
-using SpawnerSystem.SpawnManager.Signals;
+﻿using System;
+using Extentions;
+using Unity.VisualScripting;
 using UnityEngine;
+using WeaponsSystem.WeaponManager.Controller;
 
-namespace SpawnerSystem.SpawnManager
+namespace WeaponsSystem.WeaponManager
 {
-    public class SpawnManager : MonoBehaviour
+    public class WeaponsManager : MonoBehaviour
     {
         #region Self Variables
 
         #region Serialized Variables
-
-        [SerializeField] private SpawnController.SpawnController spawnController;
+        
+        [SerializeField] private WeaponsController weaponsController;
 
         #endregion
 
@@ -25,12 +27,12 @@ namespace SpawnerSystem.SpawnManager
 
         private void SubscribeEvents()
         {
-            SpawnSignals.Instance.onBulletSpawner += OnBulletSpawner;
+            
         }
 
         private void UnsubscribeEvents()
         {
-            SpawnSignals.Instance.onBulletSpawner -= OnBulletSpawner;
+
         }
 
         private void OnDisable()
@@ -40,9 +42,10 @@ namespace SpawnerSystem.SpawnManager
         
         #endregion
 
-        private IPoolable OnBulletSpawner()
+        private void OnWeaponLevelUp()
         {
-           return spawnController.BulletSpawner();
+            weaponsController.WeaponLevelUp();
         }
+
     }
 }

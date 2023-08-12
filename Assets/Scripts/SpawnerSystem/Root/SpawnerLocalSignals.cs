@@ -11,8 +11,5 @@ namespace SpawnerSystem.Root
         // PoolController to  PoolManager and SpawnController
         public Action<IPoolable, PoolType> onListAdd;
         public Func<PoolType,IPoolable> onListRemove;
-        
-        //SpawnController to SpawnManager
-        public Action<float,GameObject> weaponProperty;
     }
 }

@@ -6,11 +6,13 @@ using UnityEngine;
 
 namespace SpawnerSystem.PoolManager
 {
-    public class PoolManager : Root.SpawnerSystem
+    public class PoolManager : MonoBehaviour
     {
         #region Self Variables
 
         #region Serialized Variables
+
+        [SerializeField] private PoolController poolController;
 
         #endregion
 
@@ -44,12 +46,12 @@ namespace SpawnerSystem.PoolManager
 
         public void OnListAdd(IPoolable poolObj, PoolType poolType)
         {
-            spawner.SpawnerID.SpawnerLocalSignals.onListAdd?.Invoke(poolObj,poolType);
+            poolController.Listadd(poolObj,poolType);
         }
 
         public IPoolable OnListRemove(PoolType poolType)
         {
-            return spawner.SpawnerID.SpawnerLocalSignals.onListRemove?.Invoke(poolType);
+           return poolController.ListRemove(poolType);
         }
     }
 }
