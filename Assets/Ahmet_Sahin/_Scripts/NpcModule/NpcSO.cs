@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[CreateAssetMenu(fileName = "NpcData", menuName = "ScriptableObjects/NpcSO", order = 0)]
-public class NpcSO : ScriptableObject
+namespace Ahmet
 {
-    public NpcEvents npcEvents;
+    [CreateAssetMenu(fileName = "NpcData", menuName = "ScriptableObjects/NpcSO", order = 0)]
+    public class NpcSO : ScriptableObject
+    {
+        public NpcEvents npcEvents;
+        public Color color;
+    }
 }
