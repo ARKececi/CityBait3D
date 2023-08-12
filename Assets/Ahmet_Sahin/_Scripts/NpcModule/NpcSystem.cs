@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class NpcSystem : MonoBehaviour
+namespace Ahmet
 {
-    protected Npc npc;
-
-    protected virtual void Awake()
+    public abstract class NpcSystem : MonoBehaviour
     {
-        npc = transform.root.GetComponent<Npc>();
+        protected Npc npc;
+
+        protected virtual void Awake()
+        {
+            npc = transform.root.GetComponent<Npc>();
+        }
     }
 }
