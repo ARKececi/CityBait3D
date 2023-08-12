@@ -5,12 +5,11 @@ using UnityEngine;
 
 namespace SpawnTest
 {
-    public class BulletManager : MonoBehaviour, IPoolable
+    public class Bullet : MonoBehaviour, IPoolable
     {
         [SerializeField] private Rigidbody rigidbody;
-        public GameObject IGameObject => transform.gameObject;
-        public Transform ITransform => transform;
+        public GameObject BulletObject => transform.gameObject;
+        public Transform Transform => transform;
         public Rigidbody IRigidbody => rigidbody;
-        
     }
 }

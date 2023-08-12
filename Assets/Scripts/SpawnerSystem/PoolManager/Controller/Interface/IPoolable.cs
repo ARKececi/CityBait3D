@@ -7,8 +7,8 @@ namespace SpawnerSystem.PoolManager.Controller.Interface
 {
     public interface IPoolable
     {
-        public GameObject IGameObject { get; }
-        public Transform ITransform { get; }
+        public GameObject BulletObject { get; }
+        public Transform Transform { get; }
         public Rigidbody IRigidbody { get; }
     }
 }

@@ -21,6 +21,12 @@ namespace SpawnerSystem.PoolManager.Controller
 
         #endregion
 
+        #region Private Variables
+
+        private readonly string POOL_DATA = "Data/CD_Pool";
+
+        #endregion
+
         #endregion
         
         #region LocalEvent Subscription
@@ -49,7 +55,7 @@ namespace SpawnerSystem.PoolManager.Controller
         
         private SerializedDictionary<PoolType, PoolData> GetWeaponData()
         {
-            return Resources.Load<CD_Pool>("Data/CD_Pool").PoolDatas;
+            return Resources.Load<CD_Pool>(POOL_DATA).PoolDatas;
         }
         
         private void Pooling()
@@ -69,9 +75,9 @@ namespace SpawnerSystem.PoolManager.Controller
         public void Listadd(IPoolable poolObj, PoolType poolType)
         {
             PoolChanges[poolType].Pool.Add(poolObj);
-            poolObj.ITransform.SetParent(place.transform,true);
-            poolObj.ITransform.position = Vector3.zero;
-            poolObj.IGameObject.SetActive(false);
+            poolObj.Transform.SetParent(place.transform,true);
+            poolObj.Transform.position = Vector3.zero;
+            poolObj.BulletObject.SetActive(false);
             if (PoolChanges[poolType].Use.Contains(poolObj))
             {
                 PoolChanges[poolType].Use.Remove(poolObj);
@@ -84,7 +90,7 @@ namespace SpawnerSystem.PoolManager.Controller
             {
                 IPoolable poolObj = PoolChanges[poolType].Pool[0];
                 PoolChanges[poolType].Use.Add(poolObj);
-                poolObj.IGameObject.SetActive(true);
+                poolObj.BulletObject.SetActive(true);
                 if (PoolChanges[poolType].Pool.Contains(poolObj))
                 {
                     PoolChanges[poolType].Pool.Remove(poolObj);

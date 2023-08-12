@@ -15,9 +15,6 @@ namespace SpawnerSystem.SpawnManager.SpawnController
 
         [SerializeField] private float enemyTime;
         [SerializeField] private int enemyCount;
-        [SerializeField] private float fireTime;
-        [SerializeField] private GameObject barrel;
-        [SerializeField] private int force;
         private const float spawnRadius = 5;
         [SerializeField] private GameObject enemySpawnDot;
 
@@ -27,33 +24,14 @@ namespace SpawnerSystem.SpawnManager.SpawnController
 
         private float _enemyTime;
         private int _enemyStackCount;
-        private float _fireTimer;
-        
+
         #endregion
 
         #endregion
-        
-        #region LocalEvent Subscription
-        private void OnEnable()
-        {
-            spawner.SpawnerID.SpawnerLocalSignals.weaponProperty += WeaponProperty;
-        }
-        private void OnDisable()
-        {
-            spawner.SpawnerID.SpawnerLocalSignals.weaponProperty -= WeaponProperty;
-        }
-        #endregion
-        
+
         private void FixedUpdate()
         {
-            FireTimer();
             EnemyTimer();
-        }
-
-        public void WeaponProperty(float time, GameObject weaponBarrel)
-        {
-            fireTime = time;
-            barrel = weaponBarrel;
         }
 
         private void EnemyTimer()
@@ -76,24 +54,13 @@ namespace SpawnerSystem.SpawnManager.SpawnController
             float enemyPositionX = Random.Range(-spawnRadius, spawnRadius);
             float enemySpawnDotZ = Random.Range(-spawnRadius, spawnRadius);
             var position = enemySpawnDot.transform.position;
-            if (enemy != null) enemy.ITransform.position = new Vector3(enemyPositionX, position.y, enemySpawnDotZ);
+            if (enemy != null) enemy.Transform.position = new Vector3(enemyPositionX, position.y, enemySpawnDotZ);
         }
-        
-        private void FireTimer()
-        {
-            while(_fireTimer < 0)
-            {
-                BulletSpawner();
-                _fireTimer = fireTime;
-            } 
-            _fireTimer -= Time.deltaTime;
-        }
-        
-        private void BulletSpawner()
+
+        public IPoolable BulletSpawner()
         {
             IPoolable bullet = spawner.SpawnerID.SpawnerLocalSignals.onListRemove?.Invoke(PoolType.BulletLow);
-            bullet.ITransform.position = barrel.transform.position;
-            bullet?.IRigidbody.AddForce(barrel.transform.forward * force, ForceMode.Impulse);
+            return bullet;
         }
     }
 }
