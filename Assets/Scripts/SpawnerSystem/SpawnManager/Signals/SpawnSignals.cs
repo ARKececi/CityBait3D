@@ -8,6 +8,6 @@ namespace SpawnerSystem.SpawnManager.Signals
 {
     public class SpawnSignals : MonoSingleton<SpawnSignals>
     {
-        public Func<IPoolable> onBulletSpawner = delegate { return null; };
+        public Func<GameObject> onBulletSpawner = delegate { return null; };
     }
 }

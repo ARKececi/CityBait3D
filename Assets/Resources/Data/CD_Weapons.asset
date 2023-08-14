@@ -14,4 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponsData:
     WeaponData:
-      m_Values: []
+      m_Keys:
+      - Level: 0
+      m_Values:
+      - FlicTime: 0.5
+        ReloadTime: 0
+        Magazine: 40
+        Weapon: {fileID: 5360654575280162932, guid: 163992539c7559545b940f370a64e1be, type: 3}

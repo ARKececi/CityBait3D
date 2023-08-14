@@ -4,7 +4,7 @@ using WeaponsSystem.Weapons.WeaponRoot;
 
 namespace WeaponsSystem.Weapons
 {
-    public class Smg : Weapon,IWeapon
+    public class Smg : BaseWeapon,IWeapon
     {
         #region Self Variables
 

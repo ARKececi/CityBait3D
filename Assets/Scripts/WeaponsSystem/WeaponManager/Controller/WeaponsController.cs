@@ -3,6 +3,7 @@ using SpawnTest;
 using UnityEngine;
 using UnityEngine.Rendering;
 using WeaponsSystem.WeaponManager.Controller.Interface;
+using WeaponsSystem.WeaponManager.Data;
 using WeaponsSystem.Weapons.WeaponRoot;
 using WeaponSystem.WeaponManager.Data;
 using WeaponSystem.WeaponManager.Data.UnityObject;

@@ -6,7 +6,7 @@ using WeaponsSystem.Weapons.WeaponRoot;
 
 namespace WeaponsSystem.Weapons
 {
-    public class Pistol : Weapon,IWeapon
+    public class Pistol : BaseWeapon,IWeapon
     {
         #region Self Variables
 

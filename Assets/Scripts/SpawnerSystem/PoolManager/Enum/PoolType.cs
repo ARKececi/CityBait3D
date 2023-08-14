@@ -4,6 +4,7 @@
     {
         BulletLow,
         EnemyLow,
+        Paint,
         Null
     }
 }

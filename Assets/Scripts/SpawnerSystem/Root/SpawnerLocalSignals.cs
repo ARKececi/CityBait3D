@@ -9,7 +9,7 @@ namespace SpawnerSystem.Root
     public struct SpawnerLocalSignals
     {
         // PoolController to  PoolManager and SpawnController
-        public Action<IPoolable, PoolType> onListAdd;
-        public Func<PoolType,IPoolable> onListRemove;
+        public Action<GameObject, PoolType> onListAdd;
+        public Func<PoolType,GameObject> onListRemove;
     }
 }

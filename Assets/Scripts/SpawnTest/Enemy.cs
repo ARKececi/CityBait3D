@@ -3,11 +3,9 @@ using UnityEngine;
 
 namespace SpawnTest
 {
-    public class Enemy : MonoBehaviour, IPoolable
+    public class Enemy : MonoBehaviour, IPoolableEnemy
     {
-        [SerializeField] private Rigidbody rigidbody;
         public GameObject BulletObject => transform.gameObject;
         public Transform Transform => transform;
-        public Rigidbody IRigidbody => rigidbody;
     }
 }

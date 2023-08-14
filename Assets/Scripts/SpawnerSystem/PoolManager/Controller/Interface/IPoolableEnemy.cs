@@ -5,10 +5,9 @@ using UnityEngine.Rendering;
 
 namespace SpawnerSystem.PoolManager.Controller.Interface
 {
-    public interface IPoolable
+    public interface IPoolableEnemy
     {
         public GameObject BulletObject { get; }
         public Transform Transform { get; }
-        public Rigidbody IRigidbody { get; }
     }
 }

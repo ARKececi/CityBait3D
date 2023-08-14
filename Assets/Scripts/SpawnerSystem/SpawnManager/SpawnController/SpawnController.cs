@@ -50,16 +50,16 @@ namespace SpawnerSystem.SpawnManager.SpawnController
         
         private void EnemySpawner()
         {
-            IPoolable enemy = spawner.SpawnerID.SpawnerLocalSignals.onListRemove?.Invoke(PoolType.EnemyLow);
+            GameObject enemy = spawner.SpawnerID.SpawnerLocalSignals.onListRemove?.Invoke(PoolType.EnemyLow);
             float enemyPositionX = Random.Range(-spawnRadius, spawnRadius);
             float enemySpawnDotZ = Random.Range(-spawnRadius, spawnRadius);
             var position = enemySpawnDot.transform.position;
-            if (enemy != null) enemy.Transform.position = new Vector3(enemyPositionX, position.y, enemySpawnDotZ);
+            if (enemy != null) enemy.transform.position = new Vector3(enemyPositionX, position.y, enemySpawnDotZ);
         }
 
-        public IPoolable BulletSpawner()
+        public GameObject BulletSpawner()
         {
-            IPoolable bullet = spawner.SpawnerID.SpawnerLocalSignals.onListRemove?.Invoke(PoolType.BulletLow);
+            GameObject bullet = spawner.SpawnerID.SpawnerLocalSignals.onListRemove?.Invoke(PoolType.BulletLow);
             return bullet;
         }
     }

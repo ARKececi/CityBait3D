@@ -1,8 +1,7 @@
 ﻿using System;
 using UnityEngine;
-using WeaponSystem.WeaponManager.Enum;
 
-namespace WeaponSystem.WeaponManager.Data
+namespace WeaponsSystem.WeaponManager.Data
 {
     [Serializable]
     public struct WeaponData

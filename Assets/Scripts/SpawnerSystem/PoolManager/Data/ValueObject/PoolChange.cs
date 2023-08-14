@@ -8,7 +8,7 @@ namespace SpawnerSystem.PoolManager.Data.ValueObject
     [Serializable]
     public class PoolChange
     {
-        public List<IPoolable> Pool = new List<IPoolable>();
-        public List<IPoolable> Use = new List<IPoolable>();
+        public List<GameObject> Pool = new List<GameObject>();
+        public List<GameObject> Use = new List<GameObject>();
     }
 }

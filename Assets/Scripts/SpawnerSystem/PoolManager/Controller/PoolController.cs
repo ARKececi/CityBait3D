@@ -66,31 +66,31 @@ namespace SpawnerSystem.PoolManager.Controller
                 int PoolCount = PoolData[PoolType].PoolCount;
                 for (int i = 0; i < PoolCount; i++)
                 {
-                    var poolObj = Instantiate(PoolObj).GetComponent<IPoolable>();
+                    var poolObj = Instantiate(PoolObj);
                     Listadd(poolObj, PoolType);
                 }
             }
         }
         
-        public void Listadd(IPoolable poolObj, PoolType poolType)
+        public void Listadd(GameObject poolObj, PoolType poolType)
         {
             PoolChanges[poolType].Pool.Add(poolObj);
-            poolObj.Transform.SetParent(place.transform,true);
-            poolObj.Transform.position = Vector3.zero;
-            poolObj.BulletObject.SetActive(false);
+            poolObj.transform.SetParent(place.transform,true);
+            poolObj.transform.position = Vector3.zero;
+            poolObj.gameObject.SetActive(false);
             if (PoolChanges[poolType].Use.Contains(poolObj))
             {
                 PoolChanges[poolType].Use.Remove(poolObj);
             }
         }
         
-        public IPoolable ListRemove(PoolType poolType)
+        public GameObject ListRemove(PoolType poolType)
         {
             if (PoolChanges[poolType].Pool.Count != 0)
             {
-                IPoolable poolObj = PoolChanges[poolType].Pool[0];
+                GameObject poolObj = PoolChanges[poolType].Pool[0];
                 PoolChanges[poolType].Use.Add(poolObj);
-                poolObj.BulletObject.SetActive(true);
+                poolObj.gameObject.SetActive(true);
                 if (PoolChanges[poolType].Pool.Contains(poolObj))
                 {
                     PoolChanges[poolType].Pool.Remove(poolObj);

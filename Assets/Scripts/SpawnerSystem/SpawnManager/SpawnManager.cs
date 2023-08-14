@@ -40,7 +40,7 @@ namespace SpawnerSystem.SpawnManager
         
         #endregion
 
-        private IPoolable OnBulletSpawner()
+        private GameObject OnBulletSpawner()
         {
            return spawnController.BulletSpawner();
         }

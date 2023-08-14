@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using FSA = UnityEngine.Serialization.FormerlySerializedAsAttribute;
 
 namespace PaintIn3D
@@ -26,7 +27,7 @@ namespace PaintIn3D
 			Constant,
 			ImpactSpeed
 		}
-
+		
 		/// <summary>This allows you to control the hit data this component sends out.
 		/// PointsIn3D = Point drawing in 3D.
 		/// PointsOnUV = Point drawing on UV (requires non-convex <b>MeshCollider</b>).
@@ -116,7 +117,7 @@ namespace PaintIn3D
 
 		protected virtual void OnCollisionStay(Collision collision)
 		{
-			CheckCollision(collision);
+			CheckCollision(collision);	
 		}
 
 		protected virtual void Update()

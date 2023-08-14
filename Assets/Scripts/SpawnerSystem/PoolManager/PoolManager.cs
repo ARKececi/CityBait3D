@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SpawnerSystem.PoolManager
 {
-    public class PoolManager : MonoBehaviour
+    public class PoolManager : Root.SpawnerSystem
     {
         #region Self Variables
 
@@ -44,12 +44,12 @@ namespace SpawnerSystem.PoolManager
         
         #endregion
 
-        public void OnListAdd(IPoolable poolObj, PoolType poolType)
+        public void OnListAdd(GameObject poolObj, PoolType poolType)
         {
             poolController.Listadd(poolObj,poolType);
         }
 
-        public IPoolable OnListRemove(PoolType poolType)
+        public GameObject OnListRemove(PoolType poolType)
         {
            return poolController.ListRemove(poolType);
         }

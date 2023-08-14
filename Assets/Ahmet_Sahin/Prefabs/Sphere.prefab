@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: -983370762921771728}
   - component: {fileID: -4102682579499332462}
   - component: {fileID: -7711000044887223097}
-  - component: {fileID: -4266932799749621877}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -35,7 +34,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5807677440909155459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &119521903151363387
@@ -196,7 +196,7 @@ MonoBehaviour:
   texture: {fileID: 2800000, guid: b232d88a05fd2304f9ecfb0eaca4f742, type: 3}
   shape: {fileID: 0}
   shapeChannel: 3
-  color: {r: 1, g: 0, b: 0, a: 1}
+  color: {r: 0.07040727, g: 0.6583599, b: 0.040445805, a: 1}
   opacity: 1
   angle: 0
   scale: {x: 1, y: 1, z: 1}
@@ -216,16 +216,72 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
---- !u!114 &-4266932799749621877
+--- !u!1 &9115356663333095215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5807677440909155459}
+  - component: {fileID: 2466511207717986790}
+  - component: {fileID: 9101907728635751698}
+  m_Layer: 0
+  m_Name: Physicsc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5807677440909155459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9115356663333095215}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8576304400605892538}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2466511207717986790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7084343030267830564}
+  m_GameObject: {fileID: 9115356663333095215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afef5f4836ceb7940889da8ecd864c64, type: 3}
+  m_Script: {fileID: 11500000, guid: 96782eb95cec49449f000d47556ea65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 8129090256468746850, guid: c201f6c81138eef44a4321f101b12e21, type: 3}
+  p3dPaintDecal: {fileID: -7711000044887223097}
+--- !u!136 &9101907728635751698
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9115356663333095215}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
