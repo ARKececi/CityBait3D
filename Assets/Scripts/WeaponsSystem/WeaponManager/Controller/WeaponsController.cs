@@ -11,7 +11,7 @@ using WeaponSystem.WeaponManager.Enum;
 
 namespace WeaponsSystem.WeaponManager.Controller
 {
-    public class WeaponsController : WeaponsSystem.Root.WeaponsSystem
+    public class WeaponsController : Root.WeaponsSystem
     {
         #region Self Variables
 
@@ -57,7 +57,7 @@ namespace WeaponsSystem.WeaponManager.Controller
                 weaponsObj.Add(VARIABLE, weapon);
                 weapon.WeaponPrefabs.transform.SetParent(player.transform);
                 weapon.WeaponPrefabs.transform.localPosition = Vector3.zero;
-                weapon.WeaponPrefabs.SetActive(false);
+                weapon.WeaponPrefabs.SetActive(true);
             }
         }
 
