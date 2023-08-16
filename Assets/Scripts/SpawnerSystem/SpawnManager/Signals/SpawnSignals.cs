@@ -9,5 +9,6 @@ namespace SpawnerSystem.SpawnManager.Signals
     public class SpawnSignals : MonoSingleton<SpawnSignals>
     {
         public Func<GameObject> onBulletSpawner = delegate { return null; };
+        public UnityAction onEnemyCountReduction = delegate { };
     }
 }

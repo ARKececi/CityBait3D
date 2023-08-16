@@ -29,6 +29,8 @@ namespace SpawnerSystem.SpawnManager.SpawnController
 
         #endregion
 
+        public void EnemyCountReduction(){_enemyStackCount--;}
+        
         private void FixedUpdate()
         {
             EnemyTimer();

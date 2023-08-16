@@ -3,6 +3,7 @@ using Extentions;
 using Unity.VisualScripting;
 using UnityEngine;
 using WeaponsSystem.WeaponManager.Controller;
+using WeaponsSystem.WeaponManager.Signals;
 
 namespace WeaponsSystem.WeaponManager
 {
@@ -27,12 +28,12 @@ namespace WeaponsSystem.WeaponManager
 
         private void SubscribeEvents()
         {
-            
+            WeaponsSignals.Instance.onWeaponLevelUp += OnWeaponLevelUp;
         }
 
         private void UnsubscribeEvents()
         {
-
+            WeaponsSignals.Instance.onWeaponLevelUp -= OnWeaponLevelUp;
         }
 
         private void OnDisable()

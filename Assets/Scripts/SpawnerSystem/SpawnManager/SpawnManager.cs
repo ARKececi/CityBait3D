@@ -26,11 +26,13 @@ namespace SpawnerSystem.SpawnManager
         private void SubscribeEvents()
         {
             SpawnSignals.Instance.onBulletSpawner += OnBulletSpawner;
+            SpawnSignals.Instance.onEnemyCountReduction += OnEnemyCountReduction;
         }
 
         private void UnsubscribeEvents()
         {
             SpawnSignals.Instance.onBulletSpawner -= OnBulletSpawner;
+            SpawnSignals.Instance.onEnemyCountReduction -= OnEnemyCountReduction;
         }
 
         private void OnDisable()
@@ -43,6 +45,11 @@ namespace SpawnerSystem.SpawnManager
         private GameObject OnBulletSpawner()
         {
            return spawnController.BulletSpawner();
+        }
+
+        private void OnEnemyCountReduction()
+        {
+            spawnController.EnemyCountReduction();
         }
     }
 }

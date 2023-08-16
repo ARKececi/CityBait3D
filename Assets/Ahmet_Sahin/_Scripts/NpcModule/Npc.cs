@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SpawnerSystem.PoolManager.Controller.Interface;
+using SpawnerSystem.SpawnManager.Signals;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Ahmet
 {
@@ -18,6 +21,11 @@ namespace Ahmet
             _material = GetComponentInChildren<SkinnedMeshRenderer>().material;
             _material.color = npcSO.color;
             Color = npcSO.color;
+        }
+
+        private void OnDisable()
+        {
+            SpawnSignals.Instance.onEnemyCountReduction?.Invoke();
         }
     }
 }

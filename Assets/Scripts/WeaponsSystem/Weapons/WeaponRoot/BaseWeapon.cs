@@ -65,8 +65,7 @@ namespace WeaponsSystem.Weapons.WeaponRoot
 
         private GameObject OnBarrel()
         {
-            Barrel = barrel;
-            return Barrel;
+            return barrel;
         }
 
         private void OnAimPosition(Vector3 vec)

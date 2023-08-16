@@ -7,9 +7,6 @@ namespace BoundarySystem.BoundaryManager.Controller
 {
     public class BoundaryPhysicsController : MonoBehaviour
     {
-        private void OnTriggerExit(Collider hit)
-        {
 
-        }
     }
 }
