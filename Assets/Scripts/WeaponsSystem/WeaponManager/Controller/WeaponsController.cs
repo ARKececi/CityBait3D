@@ -39,6 +39,7 @@ namespace WeaponsSystem.WeaponManager.Controller
         {
             weaponData = GetWeaponData();
             WeaponInstantiate();
+            weaponsObj[_weaponLevel].WeaponPrefabs.SetActive(true);
         }
 
         private SerializedDictionary<WeaponLevel, WeaponData> GetWeaponData()
@@ -57,7 +58,7 @@ namespace WeaponsSystem.WeaponManager.Controller
                 weaponsObj.Add(VARIABLE, weapon);
                 weapon.WeaponPrefabs.transform.SetParent(player.transform);
                 weapon.WeaponPrefabs.transform.localPosition = Vector3.zero;
-                weapon.WeaponPrefabs.SetActive(true);
+                weapon.WeaponPrefabs.SetActive(false);
             }
         }
 
@@ -65,7 +66,7 @@ namespace WeaponsSystem.WeaponManager.Controller
         {
             weaponsObj[_weaponLevel].WeaponPrefabs.SetActive(false);
             _weaponLevel.Level++;
-            weaponsObj[_weaponLevel].WeaponPrefabs.SetActive(true);
+            if(weaponsObj.ContainsKey(_weaponLevel)) weaponsObj[_weaponLevel].WeaponPrefabs.SetActive(true);
         }
     }
 }

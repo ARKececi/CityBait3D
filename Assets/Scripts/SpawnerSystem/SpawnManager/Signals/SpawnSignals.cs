@@ -10,5 +10,6 @@ namespace SpawnerSystem.SpawnManager.Signals
     {
         public Func<GameObject> onBulletSpawner = delegate { return null; };
         public UnityAction onEnemyCountReduction = delegate { };
+        public UnityAction onEnemyCountIncrease = delegate { };
     }
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 using WeaponsSystem.WeaponManager.Controller.Interface;
 using WeaponsSystem.Weapons.WeaponRoot;
 
@@ -18,16 +19,8 @@ namespace WeaponsSystem.Weapons
         #endregion
 
         #region Serialized Variables
-
-        [SerializeField] private GameObject IBarrel;
-
-        #endregion
-
-        #region Private Variables
-
-        private float _fireTimer;
-        private float _reloadTimer;
-        private float _magazine;
+        
+        [SerializeField] private GameObject BarrelObject;
 
         #endregion
 
@@ -35,38 +28,15 @@ namespace WeaponsSystem.Weapons
 
         private void Start()
         {
-            _magazine = Magazine;
-            _reloadTimer = ReloadTime;
-            barrel = IBarrel;
+            barrel = BarrelObject;
+            magazine = Magazine;
+            flicTime = FlicTime;
+            reloadTime = ReloadTime;
         }
 
         private void FixedUpdate()
         {
             FireTimer();
-        }
-
-        private void FireTimer()
-        {
-            if (_magazine > 0)
-            {
-                while(_fireTimer < 0)
-                {
-                    Fire();
-                    _magazine--;
-                    _fireTimer = FlicTime;
-                } 
-                _fireTimer -= Time.deltaTime;
-            }
-            else
-            {
-                while (_reloadTimer < 0)
-                {
-                    _magazine = Magazine;
-                    _reloadTimer = ReloadTime;
-                }
-
-                _reloadTimer -= Time.deltaTime;
-            }
         }
     }
 }

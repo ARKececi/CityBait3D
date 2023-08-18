@@ -30,6 +30,7 @@ namespace SpawnerSystem.SpawnManager.SpawnController
         #endregion
 
         public void EnemyCountReduction(){_enemyStackCount--;}
+        public void EnemyCountIncrease(){enemyCount++;}
         
         private void FixedUpdate()
         {

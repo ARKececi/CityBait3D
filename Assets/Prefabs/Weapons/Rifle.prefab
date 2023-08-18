@@ -129,8 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549922beb4e64eab9b614f1ea90d3643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Barrel: {fileID: 0}
-  IBarrel: {fileID: 5824708389021520427}
+  BarrelObject: {fileID: 5824708389021520427}
 --- !u!1 &5824708389021520427
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,6 @@ MonoBehaviour:
     m_Keys: 0100000000000000
     m_Values:
     - PoolObj: {fileID: 2891514772751508288, guid: 5098b5eec66e7ab48845be0b5f4cd3b0, type: 3}
-      PoolCount: 10
+      PoolCount: 30
     - PoolObj: {fileID: 4805454304088239664, guid: cd5a68d3a5e2bb841847d549968df301, type: 3}
       PoolCount: 100

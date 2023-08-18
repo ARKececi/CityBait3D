@@ -16,8 +16,13 @@ MonoBehaviour:
     WeaponData:
       m_Keys:
       - Level: 0
+      - Level: 1
       m_Values:
-      - FlicTime: 0.5
-        ReloadTime: 0
-        Magazine: 40
+      - FlicTime: 1
+        ReloadTime: 2
+        Magazine: 8
+        Weapon: {fileID: 3103316681346334616, guid: 2039b73f4cd8d3e4bbf5e349373f87c5, type: 3}
+      - FlicTime: 0.2
+        ReloadTime: 1
+        Magazine: 8
         Weapon: {fileID: 5360654575280162932, guid: 163992539c7559545b940f370a64e1be, type: 3}

@@ -27,12 +27,14 @@ namespace SpawnerSystem.SpawnManager
         {
             SpawnSignals.Instance.onBulletSpawner += OnBulletSpawner;
             SpawnSignals.Instance.onEnemyCountReduction += OnEnemyCountReduction;
+            SpawnSignals.Instance.onEnemyCountIncrease += OnEnemyCountIncrease;
         }
 
         private void UnsubscribeEvents()
         {
             SpawnSignals.Instance.onBulletSpawner -= OnBulletSpawner;
             SpawnSignals.Instance.onEnemyCountReduction -= OnEnemyCountReduction;
+            SpawnSignals.Instance.onEnemyCountIncrease -= OnEnemyCountIncrease;
         }
 
         private void OnDisable()
@@ -50,6 +52,11 @@ namespace SpawnerSystem.SpawnManager
         private void OnEnemyCountReduction()
         {
             spawnController.EnemyCountReduction();
+        }
+
+        private void OnEnemyCountIncrease()
+        {
+            spawnController.EnemyCountIncrease();
         }
     }
 }

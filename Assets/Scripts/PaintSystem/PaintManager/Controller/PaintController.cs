@@ -1,18 +1,8 @@
-﻿using System;
-using BulletSystem.BulletController;
-using BulletSystem.Root;
-using PaintIn3D;
+﻿using PaintIn3D;
 using PaintSystem.PaintManager;
-using PaintSystem.PaintManager.Data.UnityData;
 using PaintSystem.PaintManager.Data.ValueData;
-using PaintSystem.PaintManager.Signals;
-using SpawnerSystem.PoolManager.Enum;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Serialization;
-using UnityEngine.UIElements;
-using WeaponsSystem.WeaponManager.Data;
-using WeaponSystem.WeaponManager.Data.UnityObject;
 
 namespace SpawnTest
 {

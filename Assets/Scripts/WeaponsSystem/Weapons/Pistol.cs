@@ -25,21 +25,14 @@ namespace WeaponsSystem.Weapons
 
         #endregion
 
-        #region Private Variables
-
-        private float _fireTimer;
-        private float _reloadTimer;
-        private float _magazine;
-
-        #endregion
-
         #endregion
 
         private void Start()
         {
-            _magazine = Magazine;
-            _reloadTimer = ReloadTime;
             barrel = BarrelObject;
+            magazine = Magazine;
+            flicTime = FlicTime;
+            reloadTime = ReloadTime;
         }
 
         private void FixedUpdate()
@@ -47,28 +40,6 @@ namespace WeaponsSystem.Weapons
             FireTimer();
         }
 
-        private void FireTimer()
-        {
-            if (_magazine > 0)
-            {
-                while(_fireTimer < 0)
-                {
-                    Fire();
-                    _magazine--;
-                    _fireTimer = FlicTime;
-                } 
-                _fireTimer -= Time.deltaTime;
-            }
-            else
-            {
-                while (_reloadTimer < 0)
-                {
-                    _magazine = Magazine;
-                    _reloadTimer = ReloadTime;
-                }
 
-                _reloadTimer -= Time.deltaTime;
-            }
-        }
     }
 }

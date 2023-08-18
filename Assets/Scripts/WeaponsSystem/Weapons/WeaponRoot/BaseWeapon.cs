@@ -1,4 +1,5 @@
-﻿using SpawnerSystem.PoolManager.Controller.Interface;
+﻿using System;
+using SpawnerSystem.PoolManager.Controller.Interface;
 using SpawnerSystem.SpawnManager.Signals;
 using UnityEngine;
 using WeaponsSystem.Weapons.WeaponRoot.Signals;
@@ -9,25 +10,33 @@ namespace WeaponsSystem.Weapons.WeaponRoot
     {
         #region Self Variables
 
-        #region Public Variables
-
-        public GameObject Barrel;
-
-        #endregion
-
         #region Protected Variables
-        protected GameObject barrel { get; set; }
+
+        protected GameObject barrel;
+        protected int magazine;
+
+        protected float flicTime;
+
+        protected float reloadTime;
 
         #endregion
 
         #region Private Variables
         
             private Vector3 _aimPosition;
+            private float _fireTimerBase;
+            private float _reloadTimerBase;
+            private float _magazineBase;
 
         #endregion
 
         #endregion
-        
+
+        private void Start()
+        {
+            _magazineBase = magazine;
+            _reloadTimerBase = reloadTime;
+        }
 
         #region Event Subscription
 
@@ -56,6 +65,30 @@ namespace WeaponsSystem.Weapons.WeaponRoot
         }
         
         #endregion
+
+        protected void FireTimer()
+        {
+            if (_magazineBase > 0)
+            {
+                while(_fireTimerBase < 0)
+                {
+                    Fire();
+                    _magazineBase--;
+                    _fireTimerBase = flicTime;
+                } 
+                _fireTimerBase -= Time.deltaTime;
+            }
+            else
+            {
+                while (_reloadTimerBase < 0)
+                {
+                    _magazineBase = magazine;
+                    _reloadTimerBase = reloadTime;
+                }
+
+                _reloadTimerBase -= Time.deltaTime;
+            }
+        }
         
         protected void Fire()
         {
@@ -78,5 +111,7 @@ namespace WeaponsSystem.Weapons.WeaponRoot
         {
             return _aimPosition;
         }
+        
+        
     }
 }
