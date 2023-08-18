@@ -261,7 +261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96782eb95cec49449f000d47556ea65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintData:
+    m_Keys: 
+    m_Values: []
   p3dPaintDecal: {fileID: -7711000044887223097}
+  paintObj: {fileID: 0}
 --- !u!136 &9101907728635751698
 CapsuleCollider:
   m_ObjectHideFlags: 0

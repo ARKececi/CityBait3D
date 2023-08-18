@@ -6,7 +6,7 @@ namespace Ahmet
 {
     public abstract class NpcSystem : MonoBehaviour
     {
-        protected Npc npc;
+        [SerializeField] protected Npc npc;
 
         protected virtual void Awake()
         {

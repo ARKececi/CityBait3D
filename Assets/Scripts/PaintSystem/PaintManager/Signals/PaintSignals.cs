@@ -1,15 +1,12 @@
 ﻿using Extentions;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
 
-namespace SpawnTest
+namespace PaintSystem.PaintManager.Signals
 {
     public class PaintSignals : MonoSingleton<PaintSignals>
     {
-        public UnityAction<Vector3> onTransform= delegate { };
-        public UnityAction<Color> onColor = delegate { };
-        public UnityAction<Vector3> onScale = delegate { };
-        public UnityAction<bool> onActive = delegate { };
+        public UnityAction<Color,Vector3> onPaintNpc = delegate { };
+        public UnityAction<Vector3> onPaintPlane = delegate { };
     }
 }

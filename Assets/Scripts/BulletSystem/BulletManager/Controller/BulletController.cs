@@ -1,13 +1,13 @@
-﻿using System;
-using Ahmet;
+﻿using Ahmet;
 using PaintIn3D;
+using PaintSystem.PaintManager.Signals;
 using SpawnerSystem.PoolManager.Enum;
 using SpawnerSystem.PoolManager.Signals;
 using SpawnTest;
 using UnityEngine;
 using WeaponsSystem.Weapons.WeaponRoot.Signals;
 
-namespace BulletSystem.BulletController
+namespace BulletSystem.BulletManager.Controller
 {
     public class BulletController : MonoBehaviour
     {
@@ -43,19 +43,14 @@ namespace BulletSystem.BulletController
 
         public void NpcTrigger(Npc npc)
         {
-            PaintSignals.Instance.onScale?.Invoke(new Vector3(3f, 3f, 3f));
-            PaintSignals.Instance.onColor?.Invoke(npc.Color); 
-            PaintSignals.Instance.onTransform?.Invoke(npc.transform.position);
-            PaintSignals.Instance.onActive?.Invoke(true);
+            PaintSignals.Instance.onPaintNpc?.Invoke(npc.Color, npc.transform.position);
             PoolSignals.Instance.onListAdd?.Invoke(npc.gameObject,PoolType.EnemyLow);
             SetPool();
         }
 
         public void PlaneTrigger()
         {
-            PaintSignals.Instance.onScale?.Invoke(new Vector3(1f, 1f, 1f));
-            PaintSignals.Instance.onTransform?.Invoke(_aimPosition);
-            PaintSignals.Instance.onActive?.Invoke(true);
+            PaintSignals.Instance.onPaintPlane?.Invoke(_aimPosition);
             SetPool();
         }
 

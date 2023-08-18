@@ -1,16 +1,17 @@
 ﻿using System;
 using PaintIn3D;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SpawnTest
 {
     public class PaintPhysics : MonoBehaviour
     {
-        #region Slef Variables
+        #region Self Variables
 
         #region Serialized Variables
 
-        [SerializeField] private Paint paint;
+        [SerializeField] private PaintController paintController;
 
         #endregion
 
@@ -20,7 +21,7 @@ namespace SpawnTest
         {
             if (hit.TryGetComponent(out P3dPaintable plane))
             {
-                paint.OnActive(false);
+                paintController.OnActive(false);
             }
         }
     }

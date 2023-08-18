@@ -15,7 +15,7 @@ namespace BulletSystem.BulletController
 
         #region Serialized Variables
 
-        [SerializeField] private BulletController bulletController;
+        [SerializeField] private BulletManager.Controller.BulletController bulletController;
 
         #endregion
         
