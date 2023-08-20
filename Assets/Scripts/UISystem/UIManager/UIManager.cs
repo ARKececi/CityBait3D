@@ -1,4 +1,5 @@
 using System;
+using LevelSystem.Signal;
 using SpawnerSystem.SpawnManager.Signals;
 using TMPro;
 using UISystem.UIManager.Controller;
@@ -71,5 +72,10 @@ public class UIManager : MonoBehaviour
     public void OnTextChange(TextType textType, int count)
     {
         uıController.TextChange(textType,count);
+    }
+
+    public void OnNextLevel()
+    {
+        LevelSignals.Instance.onNextLevel?.Invoke();
     }
 }

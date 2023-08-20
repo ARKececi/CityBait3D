@@ -36,8 +36,8 @@ namespace WeaponsSystem.Weapons.WeaponRoot
 
         private void Start()
         {
-            _magazineBase = magazine;
-            _reloadTimerBase = reloadTime;
+             _magazineBase = magazine;
+             _reloadTimerBase = reloadTime;
         }
 
         #region Event Subscription
@@ -61,7 +61,7 @@ namespace WeaponsSystem.Weapons.WeaponRoot
             WeaponSignals.Instance.onBarrel -= OnBarrel;
             WeaponSignals.Instance.onAimPosition -= OnAimPosition;
             WeaponSignals.Instance.onAimPositionReturn -= OnAimPositionReturn;
-            WeaponSignals.Instance.onMagazineAmount += OnMagazineAmount;
+            WeaponSignals.Instance.onMagazineAmount -= OnMagazineAmount;
         }
 
         private void OnDisable()
@@ -116,13 +116,14 @@ namespace WeaponsSystem.Weapons.WeaponRoot
             transform.LookAt(_aimPosition);
         }
 
-        private void OnMagazineAmount() { magazine++;  }
+        private void OnMagazineAmount()
+        {
+            magazine++;
+        }
 
         private Vector3 OnAimPositionReturn()
         {
             return _aimPosition;
         }
-        
-        
     }
 }

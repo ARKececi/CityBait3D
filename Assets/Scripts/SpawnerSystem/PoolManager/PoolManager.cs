@@ -29,12 +29,14 @@ namespace SpawnerSystem.PoolManager
         {
             PoolSignals.Instance.onListAdd += OnListAdd;
             PoolSignals.Instance.onListRemove += OnListRemove;
+            PoolSignals.Instance.onReset += OnReset;
         }
 
         private void UnsubscribeEvents()
         {
             PoolSignals.Instance.onListAdd -= OnListAdd;
             PoolSignals.Instance.onListRemove -= OnListRemove;
+            PoolSignals.Instance.onReset -= OnReset;
         }
 
         private void OnDisable()
@@ -52,6 +54,11 @@ namespace SpawnerSystem.PoolManager
         public GameObject OnListRemove(PoolType poolType)
         {
            return poolController.ListRemove(poolType);
+        }
+
+        public void OnReset()
+        {
+            poolController.Reset();
         }
     }
 }

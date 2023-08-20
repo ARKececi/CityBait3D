@@ -99,5 +99,17 @@ namespace SpawnerSystem.PoolManager.Controller
             }
             else return null;
         }
+
+        public void Reset()
+        {
+            foreach (var keys in PoolData.Keys)
+            {
+                int keysCount = PoolChanges[keys].Use.Count;
+                for (int i = 0; i < keysCount; i++)
+                {
+                    Listadd(PoolChanges[keys].Use[0],keys);
+                }
+            }
+        }
     }
 }

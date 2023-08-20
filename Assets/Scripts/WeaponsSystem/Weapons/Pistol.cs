@@ -14,7 +14,7 @@ namespace WeaponsSystem.Weapons
 
         public float FlicTime { get; set; }
         public float ReloadTime { get; set; }
-        public int Magazine { get; set; }
+        public int Magazine { get; set; }   
         public GameObject WeaponPrefabs => gameObject;
 
         #endregion

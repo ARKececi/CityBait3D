@@ -11,5 +11,6 @@ namespace SpawnerSystem.PoolManager.Signals
     {
         public UnityAction<GameObject,PoolType> onListAdd = delegate {  };
         public Func<PoolType,GameObject> onListRemove = delegate { return null;};
+        public UnityAction onReset = delegate { };
     }
 }
