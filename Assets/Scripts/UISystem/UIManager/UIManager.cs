@@ -1,7 +1,11 @@
+using System;
 using SpawnerSystem.SpawnManager.Signals;
+using TMPro;
 using UISystem.UIManager.Controller;
+using UISystem.UIManager.Enum;
 using UISystem.UIManager.Signals;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using WeaponsSystem.WeaponManager.Signals;
 using WeaponsSystem.Weapons.WeaponRoot.Signals;
@@ -28,11 +32,13 @@ public class UIManager : MonoBehaviour
     private void SubscribeEvents()
     {
         UISignals.Instance.onSetAimImageTransform += OnSetAimImageTransform;
+        UISignals.Instance.onTextChange += OnTextChange;
     }
 
     private void UnsubscribeEvents()
     {
         UISignals.Instance.onSetAimImageTransform -= OnSetAimImageTransform;
+        UISignals.Instance.onTextChange -= OnTextChange;
     }
 
     private void OnDisable()
@@ -59,6 +65,11 @@ public class UIManager : MonoBehaviour
 
     public void AmmoAmount()
     {
-        
+        WeaponSignals.Instance.onMagazineAmount?.Invoke();
+    }
+
+    public void OnTextChange(TextType textType, int count)
+    {
+        uıController.TextChange(textType,count);
     }
 }

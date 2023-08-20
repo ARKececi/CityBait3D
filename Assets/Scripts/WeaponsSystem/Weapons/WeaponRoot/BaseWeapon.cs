@@ -1,6 +1,8 @@
 ﻿using System;
 using SpawnerSystem.PoolManager.Controller.Interface;
 using SpawnerSystem.SpawnManager.Signals;
+using UISystem.UIManager.Enum;
+using UISystem.UIManager.Signals;
 using UnityEngine;
 using WeaponsSystem.Weapons.WeaponRoot.Signals;
 
@@ -26,7 +28,7 @@ namespace WeaponsSystem.Weapons.WeaponRoot
             private Vector3 _aimPosition;
             private float _fireTimerBase;
             private float _reloadTimerBase;
-            private float _magazineBase;
+            private int _magazineBase;
 
         #endregion
 
@@ -42,6 +44,7 @@ namespace WeaponsSystem.Weapons.WeaponRoot
 
         private void OnEnable()
         {
+            UISignals.Instance.onTextChange?.Invoke(TextType.Bullet,_magazineBase);
             SubscribeEvents();
         }
 
@@ -50,6 +53,7 @@ namespace WeaponsSystem.Weapons.WeaponRoot
             WeaponSignals.Instance.onBarrel += OnBarrel;
             WeaponSignals.Instance.onAimPosition += OnAimPosition;
             WeaponSignals.Instance.onAimPositionReturn += OnAimPositionReturn;
+            WeaponSignals.Instance.onMagazineAmount += OnMagazineAmount;
         }
 
         private void UnsubscribeEvents()
@@ -57,16 +61,21 @@ namespace WeaponsSystem.Weapons.WeaponRoot
             WeaponSignals.Instance.onBarrel -= OnBarrel;
             WeaponSignals.Instance.onAimPosition -= OnAimPosition;
             WeaponSignals.Instance.onAimPositionReturn -= OnAimPositionReturn;
+            WeaponSignals.Instance.onMagazineAmount += OnMagazineAmount;
         }
 
         private void OnDisable()
         {
             UnsubscribeEvents();
         }
-        
         #endregion
+        
+        private void FixedUpdate()
+        {
+            FireTimer();
+        }
 
-        protected void FireTimer()
+        private void FireTimer()
         {
             if (_magazineBase > 0)
             {
@@ -74,8 +83,9 @@ namespace WeaponsSystem.Weapons.WeaponRoot
                 {
                     Fire();
                     _magazineBase--;
+                    UISignals.Instance.onTextChange?.Invoke(TextType.Bullet,_magazineBase);
                     _fireTimerBase = flicTime;
-                } 
+                }
                 _fireTimerBase -= Time.deltaTime;
             }
             else
@@ -85,12 +95,11 @@ namespace WeaponsSystem.Weapons.WeaponRoot
                     _magazineBase = magazine;
                     _reloadTimerBase = reloadTime;
                 }
-
                 _reloadTimerBase -= Time.deltaTime;
             }
         }
-        
-        protected void Fire()
+
+        private void Fire()
         {
             GameObject bullet = SpawnSignals.Instance.onBulletSpawner?.Invoke();
             bullet.transform.position = barrel.transform.position;
@@ -106,6 +115,8 @@ namespace WeaponsSystem.Weapons.WeaponRoot
             _aimPosition = vec;
             transform.LookAt(_aimPosition);
         }
+
+        private void OnMagazineAmount() { magazine++;  }
 
         private Vector3 OnAimPositionReturn()
         {

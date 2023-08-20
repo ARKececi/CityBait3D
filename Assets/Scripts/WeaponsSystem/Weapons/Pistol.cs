@@ -34,12 +34,5 @@ namespace WeaponsSystem.Weapons
             flicTime = FlicTime;
             reloadTime = ReloadTime;
         }
-
-        private void FixedUpdate()
-        {
-            FireTimer();
-        }
-
-
     }
 }

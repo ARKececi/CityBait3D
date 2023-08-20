@@ -34,9 +34,6 @@ namespace WeaponsSystem.Weapons
             reloadTime = ReloadTime;
         }
 
-        private void FixedUpdate()
-        {
-            FireTimer();
-        }
+
     }
 }

@@ -10,5 +10,6 @@ namespace WeaponsSystem.Weapons.WeaponRoot.Signals
         public Func<GameObject> onBarrel = delegate { return null; };
         public UnityAction<Vector3> onAimPosition = delegate { };
         public Func<Vector3> onAimPositionReturn = delegate { return Vector3.zero;};
+        public UnityAction onMagazineAmount = delegate { };
     }
 }
