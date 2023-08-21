@@ -8,6 +8,7 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     private int _money;
+    private int _income = 1;
 
     private void MoneyTextUpdate()
     {
@@ -16,7 +17,7 @@ public class MoneyManager : MonoBehaviour
 
     private void IncreaseMoney()
     {
-        _money++;
+        _money += _income;
     }
 
     private void MoneyUIUpdate()
