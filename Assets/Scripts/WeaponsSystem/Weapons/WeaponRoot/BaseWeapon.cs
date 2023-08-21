@@ -1,4 +1,6 @@
 ﻿using System;
+using SaveSystem.SaveManager.Enum;
+using SaveSystem.SaveManager.Signals;
 using SpawnerSystem.PoolManager.Controller.Interface;
 using SpawnerSystem.SpawnManager.Signals;
 using UISystem.UIManager.Enum;
@@ -36,8 +38,8 @@ namespace WeaponsSystem.Weapons.WeaponRoot
 
         private void Start()
         {
-             _magazineBase = magazine;
-             _reloadTimerBase = reloadTime;
+            _magazineBase = magazine;
+            _reloadTimerBase = reloadTime;
         }
 
         #region Event Subscription
@@ -69,7 +71,7 @@ namespace WeaponsSystem.Weapons.WeaponRoot
             UnsubscribeEvents();
         }
         #endregion
-        
+
         private void FixedUpdate()
         {
             FireTimer();
@@ -119,6 +121,7 @@ namespace WeaponsSystem.Weapons.WeaponRoot
         private void OnMagazineAmount()
         {
             magazine++;
+            SaveSignals.Instance.onSave?.Invoke(SaveType.Ammo,magazine);
         }
 
         private Vector3 OnAimPositionReturn()

@@ -8,6 +8,6 @@ namespace WeaponsSystem.WeaponManager.Data.ValueObject
     [Serializable]
     public struct WeaponsData
     {
-        public SerializedDictionary<WeaponLevel, WeaponData> WeaponData;
+        public SerializedDictionary<int, WeaponData> WeaponData;
     }
 }

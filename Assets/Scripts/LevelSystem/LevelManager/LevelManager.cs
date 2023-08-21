@@ -1,6 +1,8 @@
 ﻿using LevelSystem.LevelManager.Controller;
 using LevelSystem.LevelManager.Data;
 using LevelSystem.Signal;
+using SaveSystem.SaveManager.Enum;
+using SaveSystem.SaveManager.Signals;
 using SpawnerSystem.PoolManager.Signals;
 using UnityEngine;
 
@@ -58,9 +60,8 @@ namespace LevelSystem.LevelManager
         
         private int GetActiveLevel()
         {
-            // if (!ES3.FileExists()) return 0;
-            // return ES3.KeyExists("LevelCount") ? ES3.Load<int>("LevelCount") : 0;
-            return _levelID % Resources.Load<CD_LevelData>("Data/CD_LevelData").LevelCount;
+             if (!ES3.FileExists()) return 0;
+             return ES3.KeyExists("Level") ? ES3.Load<int>("Level") : 0;
         }
         
         private void OnLoaderLevel()
@@ -78,6 +79,7 @@ namespace LevelSystem.LevelManager
         private void OnNextLevel()
         {
             _levelID++;
+            SaveSignals.Instance.onSave?.Invoke(SaveType.Level, _levelID);
             PoolSignals.Instance.onReset?.Invoke();
             OnClearLevel();
             OnLoaderLevel();
