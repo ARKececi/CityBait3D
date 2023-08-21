@@ -1,4 +1,6 @@
 ﻿using System;
+using SaveSystem.SaveManager.Enum;
+using SaveSystem.SaveManager.Signals;
 using SpawnerSystem.PoolManager.Controller.Interface;
 using SpawnerSystem.PoolManager.Enum;
 using UnityEngine;
@@ -29,8 +31,24 @@ namespace SpawnerSystem.SpawnManager.SpawnController
 
         #endregion
 
+        private void Start()
+        {
+            enemyCount = GetActiveWalkerCount();
+        }
+
+        private int GetActiveWalkerCount()
+        {
+            if (!ES3.FileExists()) return enemyCount;
+            return ES3.KeyExists("WalkerCount") ? ES3.Load<int>("WalkerCount") : enemyCount;
+        }
+
         public void EnemyCountReduction(){_enemyStackCount--;}
-        public void EnemyCountIncrease(){enemyCount++;}
+
+        public void EnemyCountIncrease()
+        {
+            enemyCount++;
+            SaveSignals.Instance.onSave?.Invoke(SaveType.Walkers,enemyCount);
+        }
         
         private void FixedUpdate()
         {

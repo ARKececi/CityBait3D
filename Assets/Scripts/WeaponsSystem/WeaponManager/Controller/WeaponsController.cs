@@ -1,4 +1,6 @@
 ﻿using System;
+using SaveSystem.SaveManager.Enum;
+using SaveSystem.SaveManager.Signals;
 using SpawnTest;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -18,9 +20,9 @@ namespace WeaponsSystem.WeaponManager.Controller
         #region Serialized Variables
 
         [SerializeField]
-        private SerializedDictionary<WeaponLevel, WeaponData> weaponData = new SerializedDictionary<WeaponLevel, WeaponData>();
+        private SerializedDictionary<int, WeaponData> weaponData = new SerializedDictionary<int, WeaponData>();
         [SerializeField] 
-        private SerializedDictionary<WeaponLevel, IWeapon> weaponsObj = new SerializedDictionary<WeaponLevel, IWeapon>();
+        private SerializedDictionary<int, IWeapon> weaponsObj = new SerializedDictionary<int, IWeapon>();
         [SerializeField]
         private GameObject player;
 
@@ -29,7 +31,7 @@ namespace WeaponsSystem.WeaponManager.Controller
         #region Private Variables
 
         private readonly string WEAPON_DATA = "Data/CD_Weapons";
-        private WeaponLevel _weaponLevel = new WeaponLevel();
+        private int _weaponLevel;
 
         #endregion
 
@@ -39,10 +41,16 @@ namespace WeaponsSystem.WeaponManager.Controller
         {
             weaponData = GetWeaponData();
             WeaponInstantiate();
-            weaponsObj[_weaponLevel].WeaponPrefabs.SetActive(true);
+            weaponsObj[GetActiveWeapon()].WeaponPrefabs.SetActive(true);
+        }
+        
+        private int GetActiveWeapon()
+        {
+            if (!ES3.FileExists()) return 0;
+            return ES3.KeyExists("WeaponCount") ? ES3.Load<int>("WeaponCount") : 0;
         }
 
-        private SerializedDictionary<WeaponLevel, WeaponData> GetWeaponData()
+        private SerializedDictionary<int, WeaponData> GetWeaponData()
         {
             return Resources.Load<CD_Weapons>(WEAPON_DATA).WeaponsData.WeaponData;
         }
@@ -64,9 +72,14 @@ namespace WeaponsSystem.WeaponManager.Controller
 
         public void WeaponLevelUp()
         {
-            weaponsObj[_weaponLevel].WeaponPrefabs.SetActive(false);
-            _weaponLevel.Level++;
-            if(weaponsObj.ContainsKey(_weaponLevel)) weaponsObj[_weaponLevel].WeaponPrefabs.SetActive(true);
+            int weaponlevel = _weaponLevel + 1;
+            if (weaponsObj.TryGetValue(weaponlevel, out var value))
+            {
+                weaponsObj[_weaponLevel].WeaponPrefabs.SetActive(false);
+                _weaponLevel++;
+                SaveSignals.Instance.onSave?.Invoke(SaveType.FireRate, _weaponLevel);
+                value.WeaponPrefabs.SetActive(true);
+            }
         }
     }
 }

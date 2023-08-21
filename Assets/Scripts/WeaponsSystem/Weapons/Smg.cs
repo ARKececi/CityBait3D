@@ -29,11 +29,15 @@ namespace WeaponsSystem.Weapons
         private void Start()
         {
             barrel = BarrelObject;
-            magazine = Magazine;
+            magazine = GetActiveMagazine();
             flicTime = FlicTime;
             reloadTime = ReloadTime;
         }
-
-
+        
+        private int GetActiveMagazine()
+        {
+            if (!ES3.FileExists()) return Magazine;
+            return ES3.KeyExists("Magazine") ? ES3.Load<int>("Magazine") : Magazine;
+        }
     }
 }
