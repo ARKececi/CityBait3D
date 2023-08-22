@@ -86,6 +86,7 @@ namespace WeaponsSystem.Weapons.WeaponRoot
                     Fire();
                     _magazineBase--;
                     UISignals.Instance.onTextChange?.Invoke(TextType.Bullet,_magazineBase);
+                    UISignals.Instance.onNextLevelButton?.Invoke();
                     _fireTimerBase = flicTime;
                 }
                 _fireTimerBase -= Time.deltaTime;

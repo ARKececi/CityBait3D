@@ -32,6 +32,8 @@ namespace LevelSystem.LevelManager
         {
             _levelID = GetActiveLevel();
             OnLoaderLevel();
+            // if (GetActiveMap() == null) OnLoaderLevel();
+            // else Instantiate(GetActiveMap());
         }
         
         #region Event Subscription
@@ -62,6 +64,12 @@ namespace LevelSystem.LevelManager
         {
              if (!ES3.FileExists()) return 0;
              return ES3.KeyExists("Level") ? ES3.Load<int>("Level") : 0;
+        }
+        
+        private GameObject GetActiveMap()
+        {
+            if (!ES3.FileExists()) return null;
+            return ES3.KeyExists("Map") ? ES3.Load<GameObject>("Map") : null;
         }
         
         private void OnLoaderLevel()

@@ -9,6 +9,7 @@ namespace PaintIn3D
 	[AddComponentMenu(P3dHelper.ComponentMenuPrefix + "Channel Counter Text")]
 	public class P3dChannelCounterText : MonoBehaviour
 	{
+		private float _percent;
 		[System.Serializable] public class StringEvent : UnityEvent<string> {}
 
 		public enum ChannelType
@@ -62,15 +63,21 @@ namespace PaintIn3D
 
 			var final   = format;
 			var percent = P3dHelper.RatioToPercentage(P3dHelper.Divide(count, total), decimalPlaces);
-
+			percent *= 2;
+			_percent = percent;
 			final = final.Replace("{TOTAL}", total.ToString());
 			final = final.Replace("{COUNT}", count.ToString());
-			final = final.Replace("{PERCENT}", percent.ToString());
+			final = final.Replace("{PERCENT}", (percent).ToString());
 
 			if (onString != null)
 			{
 				onString.Invoke(final);
 			}
+		}
+
+		public float Percent()
+		{
+			return _percent;
 		}
 	}
 }

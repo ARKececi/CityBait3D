@@ -54,8 +54,11 @@ namespace PaintIn3D
 				ratio = 1.0f - ratio;
 			}
 
+			ratio *= 2;
 			cachedImage.fillAmount = Mathf.Clamp01(ratio);
 		}
+		
+		
 	}
 }
 

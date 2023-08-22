@@ -7,6 +7,7 @@
         Walkers,
         FireRate,
         Ammo,
-        Level
+        Level,
+        Map
     }
 }

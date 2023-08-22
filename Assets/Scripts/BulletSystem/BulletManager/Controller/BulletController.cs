@@ -45,7 +45,7 @@ namespace BulletSystem.BulletManager.Controller
         {
             PaintSignals.Instance.onPaintNpc?.Invoke(npc.Color, npc.transform.position);
             PoolSignals.Instance.onListAdd?.Invoke(npc.gameObject,PoolType.EnemyLow);
-            NpcSignals.Instance.onNpcHit?.Invoke();
+            ScoreSignals.Instance.onNpcHit?.Invoke();
             SetPool();
         }
 

@@ -29,7 +29,6 @@ namespace BulletSystem.BulletController
             }
             else if (hit.TryGetComponent(out P3dPaintable paintable))
             {
-                Debug.Log("Paintable");
                 bulletController.PlaneTrigger();
             }
         }

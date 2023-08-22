@@ -7,6 +7,7 @@
         Income,
         Walkers,
         FireRate,
-        Ammo
+        Ammo,
+        NextLevel
     }
 }

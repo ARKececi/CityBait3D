@@ -9,5 +9,8 @@ namespace UISystem.UIManager.Signals
     {
         public UnityAction<Vector3> onSetAimImageTransform = delegate { };
         public UnityAction<TextType,int> onTextChange = delegate { };
+        public UnityAction<TextType> onOpenPanel = delegate { };
+        public UnityAction<TextType> onClosePanel = delegate { };
+        public UnityAction onNextLevelButton = delegate { };
     }
 }

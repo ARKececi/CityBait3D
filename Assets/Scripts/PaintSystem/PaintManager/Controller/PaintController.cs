@@ -1,6 +1,7 @@
 ﻿using PaintIn3D;
 using PaintSystem.PaintManager;
 using PaintSystem.PaintManager.Data.ValueData;
+using SaveSystem.SaveManager.Signals;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -45,6 +46,11 @@ namespace SpawnTest
             p3dPaintDecal.Scale = paintData[PaintType.Plane].PaintScale;
             transform.position = position;
             OnActive(true);
+        }
+
+        public void MapSave(GameObject map)
+        {
+            SaveSignals.Instance.onMapSave?.Invoke(map.transform.parent.gameObject);
         }
     }
 }

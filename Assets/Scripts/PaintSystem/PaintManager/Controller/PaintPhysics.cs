@@ -22,6 +22,7 @@ namespace SpawnTest
             if (hit.TryGetComponent(out P3dPaintable plane))
             {
                 paintController.OnActive(false);
+                //paintController.MapSave(plane.gameObject);
             }
         }
     }
